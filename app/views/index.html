@@ -11,13 +11,18 @@
 				<button ng-click="deleteWeight(weight)" value="Delete">Delete</button>
 			</li>
 		</ul>
+
+		<line-chart></line-chart>
+
 		<form>
 			<input type="text" ng-model="weight" /><br>
 			<input type="submit" ng-click="addWeight(weight)" value="Add" />
 		</form>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js" type="text/javascript"></script>
+	<script src="../js/services/d3Service.js" type="text/javascript"></script>
 	<script src="../js/app.js" type="text/javascript"></script>
+	<script src="../js/directives/lineChart.js" type="text/javascript"></script>
 	<script src="../js/controllers/weighins_controller.js" type="text/javascript"></script>
 	</body>
 </html>
