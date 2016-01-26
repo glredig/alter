@@ -36,12 +36,7 @@ app.directive('lineChart', ['$window', 'd3Service', function($window, d3Service)
 				 
 				    var width = d3.select(element[0]).node().offsetWidth - margin,
 				        height = 500 - margin,
-				        color = d3.scale.category20(),
-				        xScale = d3.scale.linear()
-				          .domain([0, d3.max(data, function(d) {
-				            return d.weight;
-				          })])
-				          .range([0, width]);
+				        color = d3.scale.category20();
  
 					    svg.attr('height', height);
 
@@ -50,7 +45,7 @@ app.directive('lineChart', ['$window', 'd3Service', function($window, d3Service)
 				      .range([0, width]);
 
 				    var y = d3.scale.linear()
-				      .domain([0, d3.max(data, function(d) {return d.weight}) + 2])
+				      .domain([d3.min(data, function(d) {return d.weight - 20}), d3.max(data, function(d) {return d.weight}) + 2])
 				      .range([height, 0]);
 
 				    var total_line = d3.svg.line()
