@@ -1,7 +1,9 @@
 app.directive('lineChart', ['$window', 'd3Service', function($window, d3Service) {
 	return {
 		restrict: 'EA',
-		scope: {},
+		scope: {
+			data: '='
+		},
 		link: function(scope, element, attrs) {
 			d3Service.d3().then(function(d3) {
 				var margin = parseInt(attrs.margin) || 20;
@@ -14,20 +16,16 @@ app.directive('lineChart', ['$window', 'd3Service', function($window, d3Service)
 	            	scope.$apply();
 	          	};
 	 
-	          	// hard-code data
-	          	scope.data = [
-		            {date: 1, weight: 188},
-		            {date: 2, weight: 189},
-		            {date: 3, weight: 187.2},
-		            {date: 4, weight: 186.6}
-	          	];
-	 
 	          	// Watch for resize event
 	          	scope.$watch(function() {
 	            	return angular.element($window)[0].innerWidth;
 	          	}, function() {
 	            	scope.render(scope.data);
 	          	});
+
+	          	scope.$watch('data', function(newVals, oldVals) {
+  					return scope.render(newVals);
+				}, true);
 	 
 	          	scope.render = function(data) {
 				    svg.selectAll('*').remove();

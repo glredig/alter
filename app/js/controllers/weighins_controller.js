@@ -1,12 +1,26 @@
 app.controller('WeighinsController', function($scope) {
-	$scope.weights = [188, 189, 190, 187];
+	$scope.weights = [
+		{ date: 1,
+		  weight: 188
+		}, 
+		{ date: 2,
+		  weight: 190
+		}, 
+		{ date: 3,
+		  weight: 187.4
+		}, 
+		{ date: 4, 
+		  weight: 186.4
+		}
+		];
 
 	$scope.addWeight = function(weight) {
 		if (weight === '') {
 			return
 		}
-		$scope.weights.push(weight);
+		$scope.weights.push({date: $scope.weights.length + 1, weight: parseFloat(weight)});
 
+		console.log($scope.weights);	
 		$scope.weight = '';
 	};
 

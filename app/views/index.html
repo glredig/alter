@@ -7,13 +7,13 @@
 	<div ng-controller="WeighinsController">
 		<ul>
 			<li ng-repeat="weight in weights">
-				{{ weight }}
+				{{ weight.weight }}
 				<button ng-click="deleteWeight(weight)" value="Delete">Delete</button>
 			</li>
 		</ul>
 	
 		<div style="margin-right: 5%;">
-			<line-chart margin=50></line-chart>
+			<line-chart margin=50 data="weights"></line-chart>
 
 			<form>
 				<input type="text" ng-model="weight" /><br>
