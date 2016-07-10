@@ -1,0 +1,14 @@
+{
+	"name" : "alter",
+	"version" : "0.1.0",
+	"description" : "A fitness tracking app",
+	"main" : "server.js",
+	"scripts" : {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies" : {
+		"express" : "4.14.0",
+		"babel-register" : "6.9.0"
+	},
+	"license" : "MIT"
+}
